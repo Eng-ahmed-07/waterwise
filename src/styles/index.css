@@ -1,0 +1,59 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+@layer base {
+  /* Tailwind v4 defaults borders to currentColor: restore a quiet default. */
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-line);
+  }
+
+  html {
+    color-scheme: light;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    min-height: 100dvh;
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: var(--text-base--line-height);
+    -webkit-font-smoothing: antialiased;
+    /* Arabic joins letters: any tracking breaks the script. */
+    letter-spacing: normal;
+  }
+
+  /* Tailwind v4 preflight sets buttons to the default cursor. */
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]) {
+    cursor: pointer;
+  }
+
+  /* One consistent, always-visible keyboard focus ring (WCAG 2.4.7). */
+  :where(a, button, input, select, textarea, summary, dialog, [tabindex]):focus-visible {
+    outline: 2px solid var(--color-primary-600);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background-color: var(--color-primary-200);
+    color: var(--color-ink);
+  }
+}
+
+/* Respect reduced-motion preferences globally. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

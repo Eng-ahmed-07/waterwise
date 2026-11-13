@@ -1,0 +1,103 @@
+/*
+ * WaterWise design tokens: the single source of truth.
+ *
+ * Tailwind v4 reads this @theme block and generates both the utilities
+ * (bg-primary-600, text-ink-muted, shadow-card, rounded-card ...) and the CSS variables
+ * (var(--color-primary-600)). Components use ONLY these tokens: the default Tailwind palette
+ * is removed below, so a stray `bg-blue-500` produces no CSS.
+ *
+ * Contrast rules (verified by src/styles/contrast.test.js):
+ *  - White text is allowed on primary-600 and darker, and on danger-600 and darker.
+ *  - White text is NOT allowed on secondary-500 (2.49:1). Use ink text on secondary fills.
+ *  - primary-600 is NOT allowed as text on canvas (4.19:1). Use primary-700 for text and links.
+ *  - Teal text uses secondary-700 or darker.
+ *  - Input and control borders use line-strong (3:1 minimum against surface and canvas).
+ */
+@theme {
+  --color-*: initial;
+
+  /* Base */
+  --color-white: #ffffff;
+  --color-canvas: #eaf7fc;          /* page background (brief) */
+  --color-surface: #ffffff;         /* cards, inputs (brief) */
+  --color-ink: #0b2a3c;             /* primary text, dark navy (Phase 0) */
+  --color-ink-muted: #476072;       /* secondary text */
+  --color-line: #d2e4ec;            /* decorative dividers and card edges */
+  --color-line-strong: #6b8898;     /* control boundaries (3:1 on surface and canvas) */
+
+  /* Primary: brief colour #087EAB sits at 600 */
+  --color-primary-50: #e9f5fa;
+  --color-primary-100: #d0ebf5;
+  --color-primary-200: #a5d8ea;
+  --color-primary-300: #6cbfdb;
+  --color-primary-400: #33a3c8;
+  --color-primary-500: #1189b7;
+  --color-primary-600: #087eab;
+  --color-primary-700: #06688c;
+  --color-primary-800: #0a526f;
+  --color-primary-900: #0c3f55;
+
+  /* Secondary: brief colour #16B8A6 sits at 500 (fills and decoration only) */
+  --color-secondary-50: #e8f9f6;
+  --color-secondary-100: #c8f1ea;
+  --color-secondary-200: #98e5d9;
+  --color-secondary-300: #5ed4c5;
+  --color-secondary-400: #2ec4b2;
+  --color-secondary-500: #16b8a6;
+  --color-secondary-600: #0f9a8b;
+  --color-secondary-700: #0d7a6f;
+  --color-secondary-800: #0f615a;
+  --color-secondary-900: #104f4a;
+
+  /* Amber: "high usage" highlights only (Phase 0 UI direction) */
+  --color-amber-50: #fff8e6;
+  --color-amber-100: #feefc3;
+  --color-amber-500: #f5a623;
+  --color-amber-700: #a15c07;
+  --color-amber-800: #7c4705;
+
+  /* Danger: errors and destructive actions */
+  --color-danger-50: #fdecea;
+  --color-danger-600: #c0352b;
+  --color-danger-700: #9f2a21;
+
+  /* Typography: one family. Arabic is never letter-spaced or italicised. */
+  --font-sans: "IBM Plex Sans Arabic", "Segoe UI", Tahoma, "Noto Sans Arabic", system-ui, sans-serif;
+
+  /* Type scale: line-heights are generous because Arabic has tall ascenders and dots below the line. */
+  --text-xs: 0.8125rem;
+  --text-xs--line-height: 1.375rem;
+  --text-sm: 0.9375rem;
+  --text-sm--line-height: 1.625rem;
+  --text-base: 1rem;
+  --text-base--line-height: 1.75rem;
+  --text-lg: 1.125rem;
+  --text-lg--line-height: 1.875rem;
+  --text-xl: 1.25rem;
+  --text-xl--line-height: 2rem;
+  --text-2xl: 1.5rem;
+  --text-2xl--line-height: 2.25rem;
+  --text-3xl: 1.875rem;
+  --text-3xl--line-height: 2.5rem;
+  --text-4xl: 2.25rem;
+  --text-4xl--line-height: 2.75rem;
+  --text-5xl: 3rem;
+  --text-5xl--line-height: 3.5rem;
+
+  /* Radius hierarchy: cards > controls > pills (not one radius for everything) */
+  --radius-control: 0.75rem;        /* rounded-control: buttons, inputs, selects (12px) */
+  --radius-card: 1rem;              /* rounded-card: cards, modal (16px, "rounded-2xl" in Phase 0) */
+
+  /* Shadows: soft, navy-tinted, low opacity */
+  --shadow-*: initial;
+  --shadow-card: 0 1px 2px rgb(11 42 60 / 0.06), 0 6px 18px -6px rgb(11 42 60 / 0.1);
+  --shadow-pop: 0 4px 10px rgb(11 42 60 / 0.08), 0 20px 40px -12px rgb(11 42 60 / 0.25);
+
+  /* Motion: subtle only */
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+}
+
+/*
+ * Spacing: Tailwind's default 4px scale (p-1 = 4px, p-2 = 8px, p-4 = 16px ...) is the spacing token set.
+ * Layout rhythm used by components: 4 / 8 / 12 / 16 / 24 / 32 (spacing steps 1, 2, 3, 4, 6, 8).
+ */
