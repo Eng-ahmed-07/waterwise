@@ -16,6 +16,15 @@ export const ar = {
     backHome: 'العودة إلى الرئيسية',
   },
 
+  welcome: {
+    title: 'مرحبًا بك في WaterWise!',
+    message:
+      'تم تطوير مشروع WaterWise باستخدام تقنيات تطوير الويب الحديثة، بهدف توفير وسيلة ذكية لتقدير ومتابعة استهلاك المياه المنزلي، وتحليل أنماط الاستخدام، والمساعدة في نشر الوعي بأهمية ترشيد استهلاك المياه.',
+    continuation: 'والآن، سنبدأ تجربة المشروع لاستعراض أهم الوظائف والإمكانيات التي يقدمها.',
+    start: 'ابدأ التجربة',
+    close: 'إغلاق',
+  },
+
   // The labelling contract (Phase 0, section 4). "actual" is reserved: see lib/basis.js.
   basis: {
     estimated: {

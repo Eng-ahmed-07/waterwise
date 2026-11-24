@@ -101,7 +101,3 @@ Layout: public navbar + footer for visitors; app shell with a top bar (desktop) 
 Dashboard windows (display choices, not benchmarks): "last 7 days" for the week figure and "last 30 days" for the
 average, per-member figure and activity breakdown; the monthly outlook uses the current month.
 
-## Not yet built
-
-Database/RLS (Phase 4), real auth and Supabase client, Formik + Yup forms, edit-a-saved-log, guest draft carry-over
-(Phase 5), charts and comparisons (Phase 6), reports (Phase 7), settings/profile/recommendations content.

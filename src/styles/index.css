@@ -57,3 +57,54 @@
     scroll-behavior: auto !important;
   }
 }
+
+dialog.welcome-dialog[open] {
+  animation: welcome-dialog-enter 220ms var(--ease-standard) both;
+}
+
+dialog.welcome-dialog::backdrop {
+  background-color: rgb(11 42 60 / 0.48);
+  backdrop-filter: blur(5px);
+  animation: welcome-backdrop-enter 220ms ease-out both;
+}
+
+dialog.welcome-dialog--closing[open] {
+  animation: welcome-dialog-exit 200ms ease-in both;
+}
+
+dialog.welcome-dialog--closing::backdrop {
+  animation: welcome-backdrop-exit 200ms ease-in both;
+}
+
+@keyframes welcome-dialog-enter {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes welcome-dialog-exit {
+  to {
+    opacity: 0;
+    transform: translateY(0.5rem) scale(0.98);
+  }
+}
+
+@keyframes welcome-backdrop-enter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes welcome-backdrop-exit {
+  to {
+    opacity: 0;
+  }
+}
